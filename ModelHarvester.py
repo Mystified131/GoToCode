@@ -100,18 +100,18 @@ outstr = 'ModelReport '  + tim + '.txt'
 
 outfile = open(outstr, "w")
 
-outfile.write("Model Report For Quotes In PROD On: " + tim)
+outfile.write("Model Report For Quotes In PROD On: " + tim + '\n')
 
 outfile.write("" + '\n')
 
-outfile.write("Each sold unit and the number of sales:")
+outfile.write("Each sold unit and the number of sales:" '\n')
 
 outfile.write("" + '\n')
 
 for elem in outlist:
     outfile.write(elem +  '\n')
 
-outfile.write("Each sold unit and the date of each sale:")
+outfile.write("Each sold unit and the date of each sale:" '\n')
 
 outfile.write("" + '\n')
 
@@ -120,7 +120,7 @@ for elem in combolst:
 
 outfile.close()
 
-print ("The ModelReport txt file should now be available in the same folder as the python code.")
+print ("The Model Report txt file should now be available in the same folder as the python code.")
 
 
 
