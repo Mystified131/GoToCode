@@ -62,7 +62,7 @@ outstr = 'V:\\Config\\TEST\\Regression Testing\\Newer\\Regression_Testing_Result
 
 outfile = open(outstr, "w")
 
-outfile.write('CPQ Regression Testing-- SOFT and HARD Test' +  '\n')
+outfile.write('CPQ Regression Testing-- SOFT and HARD Tests' +  '\n')
 
 outfile.write('Checking Values Of Matching Property IDs and Total Unique Deltas' +  '\n')
 
@@ -191,6 +191,8 @@ for ctr in range(nintest):
     outfile.write('\n')  
 
     outfile.write("The total lines with unique deltas were: " + del2total +  '\n')
+
+    outfile.write('\n')  
 
     outfile.write('\n')  
 
