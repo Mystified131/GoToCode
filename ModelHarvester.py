@@ -111,6 +111,8 @@ outfile.write("" + '\n')
 for elem in outlist:
     outfile.write(elem +  '\n')
 
+outfile.write("" + '\n')  
+
 outfile.write("Each sold unit and the date of each sale:" '\n')
 
 outfile.write("" + '\n')
