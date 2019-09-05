@@ -57,7 +57,7 @@ with open(filnm, 'r') as csvFile:
     for row in csv_reader:
         colone1int=len(row)
 
-with open(filnm, 'r') as csvFile:
+with open(filnm2, 'r') as csvFile:
     csv_reader = csv.reader(csvFile, delimiter=',')
     for row in csv_reader:
         colone2int=len(row)
@@ -125,11 +125,30 @@ for ctr in range(coloneint):
 
 #This code creates a report of deltas between the two tables
 
-outname = tablename + "report.txt"
+outname = tablename + "_report.txt"
 outfile = open(outname, "w")
 outfile.write("Report for " + tablename + '\n')
 outfile.write('\n')
+
+if colone1int == colone2int:
+    outfile.write("There are no deltas in column numbers." + '\n')
+    outfile.write('\n')
+if colone1int != colone2int:
+    outfile.write("There are deltas in column numbers." + '\n')
+    outfile.write('\n')
+    astr = str(colone1int)
+    bstr = str(colone2int)
+    outfile.write("Table 1 has " + astr + " columns." + '\n')
+    outfile.write("Table 2 has " + bstr + " columns." + '\n')
+    outfile.write('\n')
+    
 x = len(deltarows)
+
+x1 = str(x)
+
+outfile.write("There are a total of " + x1 + " deltas between the two tables." + '\n')
+outfile.write('\n')
+
 if x > 0:
     for elem in range(x):
         repstr = str("Column Number: " + str(deltacols[elem])  +  '\n' + "Row Number: " + str(deltarows[elem])  +  '\n' + "First Table: " + str(deltalistone[elem]) + " Second Table: " + str(deltalisttwo[elem]))
