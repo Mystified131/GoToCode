@@ -62,6 +62,12 @@ outstr = 'V:\\Config\\TEST\\Regression Testing\\Newer\\Regression_Testing_Result
 
 outfile = open(outstr, "w")
 
+outfile.write('CPQ Regression Testing-- SOFT Test' +  '\n')
+
+outfile.write('Checking Values Of Matching Property IDs' +  '\n')
+
+outfile.write('\n')
+
 for ctr in range(nintest):
 
     repnum = str(ctr + 1)
@@ -154,8 +160,6 @@ for ctr in range(nintest):
     deltotal = str(len(deltlst))
 
     samtot = str(simct)
-  
-    outfile.write('Soft Test-- Matching Property IDs to Values' +  '\n')
 
     outstr = "Report between " + outfil1 + " and " + outfil2
 
