@@ -113,6 +113,8 @@ for elem in outlist:
 
 outfile.write("" + '\n')  
 
+outfile.write("" + '\n')  
+
 outfile.write("Each sold unit and the date of each sale:" '\n')
 
 outfile.write("" + '\n')
