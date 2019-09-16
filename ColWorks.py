@@ -1,4 +1,4 @@
-infile = open("Col1.txt", "r")
+infile = open("comp.txt", "r")
 
 A1 = []
 
@@ -15,11 +15,28 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-outfile = open("scripts.txt", "w")
+outlst = []
+
+outval = ""
 
 for elem in A1:
+    if elem == "Nomatch":
+        outval = "999999"
+        outlst.append(outval)
+    if elem != "Nomatch":
+        outlst.append(elem)
+
+print(outlst)
+
+outfile = open("scripts.txt", "w")
+
+x = len(outlst)
+
+for ctr in range(x):
     
-    outfile.write(elem +  '\n')
+    outstr = "Update dbo.CondensingUnitModel_CondensingUnit SET CompressorModelID = " + outlst[ctr] + " WHERE CondUnitModelID = " + str(ctr + 1) + ";"
+
+    outfile.write(outstr +  '\n')
 
 outfile.close()
 
