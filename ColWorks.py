@@ -1,4 +1,4 @@
-infile = open("comp.txt", "r")
+infile = open("Mod.txt", "r")
 
 A1 = []
 
@@ -17,33 +17,59 @@ infile.close()
 
 outlst = []
 
-outval = ""
-
 for elem in A1:
-    if elem == "Nomatch":
-        outval = "999999"
-        outlst.append(outval)
-    if elem != "Nomatch":
-        outlst.append(elem)
+    achr = elem[5:6]
+    if achr == "1":
+        bchr = achr[6:8]
+        if bchr == "81":
+            outlst.append("9")
+        if bchr != "81":
+            outlst.append("8")
+    if achr == "2":
+        outlst.append("9")
+    if achr == "3":
+        bchr = achr[6:8]
+        if bchr == "00":
+            outlst.append("9")
+        if bchr != "00":
+            outlst.append("10")
+    if achr == "4":
+        outlst.append("10")
+    if achr == "5":
+        outlst.append("10")
+    if achr == "6":
+        bchr = achr[6:9]
+        if bchr == "00M":
+            outlst.append("11")
+        if bchr == "01M":
+            outlst.append("12")
+        if bchr == "00L" or bchr == "02L":
+            outlst.append("10")
+        if bchr == "01L":
+            outlst.append("11")
+        if bchr != "00M" and bchr != "01M" and bchr != "00L" and bchr != "02L" and bchr != "01L":
+            outlst.append("11")
+    if achr == "7":
+        outlst.append("12")
+    if achr == "8":
+        bchr = achr[6:8]
+        if bchr == "00":
+            outlst.append("12")
+        if bchr != "00":
+            outlst.append("13")
+    
 
 print(outlst)
 
-outfile = open("scripts.txt", "w")
+outfile = open("scriptsrec.txt", "w")
 
-x = len(outlst)
-
-for ctr in range(x):
+for elem in outlst:
     
-    outstr = "Update dbo.CondensingUnitModel_CondensingUnit SET CompressorModelID = " + outlst[ctr] + " WHERE CondUnitModelID = " + str(ctr + 1) + ";"
-
-    outfile.write(outstr +  '\n')
+    outfile.write(elem +  '\n')
 
 outfile.close()
 
 print ("")
 
 print ("The scripts txt file should now be available in the same folder as the python code.")        
-
-
-
 

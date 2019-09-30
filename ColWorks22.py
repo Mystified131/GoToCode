@@ -1,4 +1,4 @@
-infile = open("RSNu.txt", "r")
+infile = open("scripts.txt", "r")
 
 A1 = []
 
@@ -18,15 +18,22 @@ infile.close()
 outlst = []
 
 for elem in A1:
-    for x in range(8,16):
-        if int(elem) == x:
-            outlst.append("1")
-        if int(elem) != x:
-            outlst.append("0")
+    if "7/8" in elem:
+        outlst.append("A")
+    if "1 1/8" in elem:
+        outlst.append("B")
+    if "1 3/8" in elem:
+        outlst.append("C")
+    if "1 5/8" in elem:
+        outlst.append("D")
 
-print(outlst)
 
-outfile = open("scriptsrec.txt", "w")
+    if "7/8" not in elem and "1 1/8" not in elem and "1 3/8" not in elem and "1 5/8" not in elem:
+        outlst.append("0")
+
+
+
+outfile = open("scripts4.txt", "w")
 
 for elem in outlst:
     

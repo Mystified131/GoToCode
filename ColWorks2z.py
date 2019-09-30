@@ -1,4 +1,4 @@
-infile = open("RSNu.txt", "r")
+infile = open("RSizFri.txt", "r")
 
 A1 = []
 
