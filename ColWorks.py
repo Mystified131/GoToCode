@@ -8,7 +8,7 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "-":
+        if y.isalnum() or y == "/" or y == "-" or y == ".":
             bline+=y
     A1.append(bline)
     bline = ""
@@ -18,10 +18,10 @@ infile.close()
 outlst = []
 
 for elem in A1:
-    if elem == "1":
-        outlst.append("6")
-    if elem == "2":
-        outlst.append("3")
+    if elem:
+        outlst.append(elem)
+    if not elem:
+        outlst.append("NULL")
 
 outfile = open("scriptsrec.txt", "w")
 

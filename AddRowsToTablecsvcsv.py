@@ -2,6 +2,10 @@
 
 import csv
 
+def process(csv_reader, csv_writer):
+    for row in csv_reader:
+        writer.writerow([row])
+
 #This code takes in the necessary arguments
 
 print("")
@@ -55,12 +59,13 @@ for x in range(colnmm):
 
     vallst = []
 
-    with open(valin) as csv_file:
-        csv_reader = csv.reader(csv_file, delimiter=',')
 
-        for row in csv_reader:
-            x1 = row[valcolnumint]            
-            vallst.append(x1) 
+    with open(valin, 'rb') as in_csv, open('result.csv' , 'wb') as out_csv:
+            writer = csv.writer(out_csv, delimiter='\t')
+            reader = csv.reader(in_csv, delimiter='\t')
+            process(reader, writer)
+
+
 
     if x == 0:
 
@@ -72,7 +77,8 @@ for x in range(colnmm):
                 eleme = elem
 
             addst = "INSERT INTO " + tbl +  " VALUES ( " + eleme + ", "
-            addlst.append(addst)
+            addlst.append(addst)        
+
 
     if x > 0:
 
@@ -100,7 +106,7 @@ for elem in finlst:
 
 outfile.close()
 
-print("Your file is listed as 'popscript', and can be found in this directory.")
+print("Your file is listed as 'test', and can be found in this directory.")
 
     
 

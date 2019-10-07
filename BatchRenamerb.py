@@ -11,10 +11,6 @@ rootdir = input("Please enter the directory housing the files to rename, in this
 
 print("")
 
-print("Note that all files in this directory AND its subdirectories are liable for renaming when this application runs.")
-
-print("")
-
 filtyp = input("To change all files in the directory, please enter 'All'. To change a particular filetype, please enter the filetype suffix-- ie '.mp3' or '.jpg': ")
 
 print("")
@@ -29,7 +25,7 @@ if filtyp == "All":
     fillrt = []
     filltyp = []
 
-    for subdir, dirs, files in os.walk(rootdir):
+    for subdir, dirs, files in os.listdir(rootdir):
 
         for file in files:
             filepath = subdir + os.sep + file
