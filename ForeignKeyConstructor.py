@@ -1,3 +1,14 @@
+import datetime
+
+right_now = datetime.datetime.now().isoformat()          
+list = []
+
+for i in right_now:
+    if i.isnumeric():
+        list.append(i)
+
+tim = ("".join(list))
+
 print("")
 
 print("Welcome to the Foreign Key Constructor.")
@@ -38,7 +49,9 @@ plustr = "ALTER TABLE " + totable + " ALTER COLUMN " + colm + " " + datyp + " No
 
 addstr = "ALTER TABLE " + totable + " ADD FOREIGN KEY (" + colm + ") REFERENCES " + fromtable + "(" + fromcolm + ");"
 
-outfile = open("FKBuilder.txt", "w")
+afil = "FKBuilder" + tim + ".txt"
+
+outfile = open(afil, "w")
 
 outfile.write(questr +  '\n')
 outfile.write(plustr +  '\n')
