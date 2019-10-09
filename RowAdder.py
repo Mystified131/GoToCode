@@ -1,6 +1,14 @@
-
-
 import csv
+import datetime
+
+right_now = datetime.datetime.now().isoformat()          
+list = []
+
+for i in right_now:
+    if i.isnumeric():
+        list.append(i)
+
+tim = ("".join(list))
 
 #This code takes in the necessary arguments
 
@@ -35,7 +43,9 @@ for x in range(colnum):
     if yn != "1":
         strlst.append(0)
 
-with open(valin, newline='\n') as f_input, open('result.csv', 'w', newline='\n') as f_output:
+outfil = tbl + tim + ".csv"
+
+with open(valin, newline='\n') as f_input, open(outfil, 'w', newline='\n') as f_output:
 
     csv_input = csv.reader(f_input)
     csv_output = csv.writer(f_output)
