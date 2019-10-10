@@ -88,7 +88,7 @@ with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_o
 
         for x in range(1, int(colnum)):
 
-            xstr = "ALTER " + tbl + " SET "
+            xstr = "UPDATE " + tbl + " SET "
             
             outlst.append(xstr)
             
