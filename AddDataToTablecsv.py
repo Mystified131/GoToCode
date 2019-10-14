@@ -1,5 +1,15 @@
 
 import csv
+import datetime
+
+right_now = datetime.datetime.now().isoformat()          
+list = []
+
+for i in right_now:
+    if i.isnumeric():
+        list.append(i)
+
+tim = ("".join(list))
 
 #This code takes in the necessary arguments
 
@@ -21,7 +31,7 @@ colnum = input("How many columns are there to populate? Note that, if the primar
 
 print("")
 
-filtxt = "popscript" + ".txt"
+filtxt = tbl + "_" + tim + ".txt"
 
 outfile = open(filtxt, "w")
 

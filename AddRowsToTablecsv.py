@@ -1,6 +1,17 @@
 
 
 import csv
+import datetime
+
+right_now = datetime.datetime.now().isoformat()          
+list = []
+
+for i in right_now:
+    if i.isnumeric():
+        list.append(i)
+
+tim = ("".join(list))
+
 
 #This code takes in the necessary arguments
 
@@ -27,7 +38,7 @@ with open(valin, 'r') as csvFile:
 
 #colnum = 8
 
-filtxt = "popscript" + ".txt"
+filtxt = tbl + "_" + tim + ".txt"
 
 outfile = open(filtxt, "w")
 
@@ -100,7 +111,7 @@ for elem in finlst:
 
 outfile.close()
 
-print("Your file is listed as 'popscript', and can be found in this directory.")
+print("Your file can be found in this directory.")
 
     
 
