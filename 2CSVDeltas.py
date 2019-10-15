@@ -1,4 +1,14 @@
 import csv
+import datetime
+
+right_now = datetime.datetime.now().isoformat()          
+list = []
+
+for i in right_now:
+    if i.isnumeric():
+        list.append(i)
+
+tim = ("".join(list))
 
 #This code gets necessary arguments from the user
 
@@ -125,7 +135,7 @@ for ctr in range(coloneint):
 
 #This code creates a report of deltas between the two tables
 
-outname = tablename + "_report.txt"
+outname = tablename + tim + "report.txt"
 outfile = open(outname, "w")
 outfile.write("Report for " + tablename + '\n')
 outfile.write('\n')

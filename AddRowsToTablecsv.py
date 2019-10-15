@@ -38,7 +38,7 @@ with open(valin, 'r') as csvFile:
 
 #colnum = 8
 
-filtxt = tbl + "_" + tim + ".txt"
+filtxt = tbl + tim + ".txt"
 
 outfile = open(filtxt, "w")
 

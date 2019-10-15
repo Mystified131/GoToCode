@@ -31,7 +31,7 @@ colnum = input("How many columns are there to populate? Note that, if the primar
 
 print("")
 
-filtxt = tbl + "_" + tim + ".txt"
+filtxt = tbl + tim + ".txt"
 
 outfile = open(filtxt, "w")
 
