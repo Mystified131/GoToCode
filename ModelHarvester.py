@@ -15,6 +15,12 @@ for i in right_now:
 
 tim = ("".join(list))
 
+print("")
+
+stt = input("Press 'Enter' to start the application: ")
+
+print("")
+
 rootdir = "V:\Quotes\Prod\Release"
 
 modlst = []
@@ -28,6 +34,7 @@ for subdir, dirs, files in os.walk(rootdir):
         filepath = subdir + os.sep + file
 
         if filepath.endswith("00.Quote.00.xml"):
+            print("")
             print(filepath)
             infile = open(filepath, "r")
 
@@ -123,6 +130,8 @@ for elem in combolst:
     outfile.write(elem +  '\n')
 
 outfile.close()
+
+print("")
 
 print ("The Model Report txt file should now be available in the same folder as the python code.")
 
