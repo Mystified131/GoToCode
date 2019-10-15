@@ -181,7 +181,7 @@ for ctr in range(nintest):
 
 outfile.close()
 
-print ("The scripts txt file should now be available in the same folder as the python code.")
+print ("The scripts txt file should now be available in the appropriate folder.")
 
 
 
