@@ -3,9 +3,14 @@
 import os
 import re
 import datetime
+from subprocess import call
 
 def convert_file(file):
-    infile = open(file, "r")
+    try:
+        infile = open(file, "r")
+    except:
+        print("No such file(s) found.")
+        call(["python", "HardAndSoftTest.py"])
 
     A1 = []
 
