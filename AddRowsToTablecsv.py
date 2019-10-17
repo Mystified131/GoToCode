@@ -1,7 +1,6 @@
-
-
 import csv
 import datetime
+from subprocess import call
 
 right_now = datetime.datetime.now().isoformat()          
 list = []
@@ -31,10 +30,15 @@ print("")
 
 valin = val  + ".csv"
 
-with open(valin, 'r') as csvFile:
-    csv_reader = csv.reader(csvFile, delimiter=',')
-    for row in csv_reader:
-        colnum=len(row)
+try:
+    with open(valin, 'r') as csvFile:
+        csv_reader = csv.reader(csvFile, delimiter=',')
+        for row in csv_reader:
+            colnum=len(row)
+
+except:
+    print("No such source file found.")
+    call(["python", "AddRowsToTablecsv.py"])
 
 #colnum = 8
 

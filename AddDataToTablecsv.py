@@ -1,6 +1,7 @@
 
 import csv
 import datetime
+from subprocess import call
 
 right_now = datetime.datetime.now().isoformat()          
 list = []
@@ -57,6 +58,15 @@ print("")
 val0lst = []
 
 valin = val  + ".csv"
+
+try:
+    infile = open(valin, "r")
+
+except:
+    print("No source csv file by that name can be found.")
+    call(["python", "AddDataToTablecsv.py"])
+
+infile.close()
 
 with open(valin) as csv_file:
         csv_reader = csv.reader(csv_file, delimiter=',')

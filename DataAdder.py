@@ -61,7 +61,7 @@ try:
     infile = open(valin, "r")
 
 except:
-    print("No  source csv file by that name can be found.")
+    print("No source csv file by that name can be found.")
     call(["python", "DataAdder.py"])
 
 infile.close()
