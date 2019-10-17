@@ -38,7 +38,7 @@ outfile.write("Compiled on " + tim + '\n')
 
 outfile.write('\n')
 
-outfile.write("Round marked as 'Over' indicate a higher variance than 10%, and may require investigation." + '\n')
+outfile.write("Rounds marked as 'Over' indicate a higher variance than 10%, and may require investigation." + '\n')
 
 outfile.write('\n')
 

@@ -79,7 +79,7 @@ with open(valin, newline='\n') as f_input, open(outfil, 'w', newline='\n') as f_
 
         csv_output.writerow(outlst)  
 
-print("Your file is listed as 'result.csv', and can be found in this directory.")
+print("Your file can be found in this directory.")
 
     
 
