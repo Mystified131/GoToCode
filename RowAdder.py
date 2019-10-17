@@ -1,5 +1,6 @@
 import csv
 import datetime
+from subprocess import call
 
 right_now = datetime.datetime.now().isoformat()          
 list = []
@@ -28,10 +29,17 @@ print("")
 
 valin = val  + ".csv"
 
-with open(valin, 'r') as csvFile:
-    csv_reader = csv.reader(csvFile, delimiter=',')
-    for row in csv_reader:
-        colnum=len(row)
+try:
+    with open(valin, 'r') as csvFile:
+        csv_reader = csv.reader(csvFile, delimiter=',')
+        for row in csv_reader:
+            colnum=len(row)
+
+except:
+    print("")
+    print("No file by that name can be found.")
+    call(["python", "RowAdder.py"])
+
 
 strlst = []
 

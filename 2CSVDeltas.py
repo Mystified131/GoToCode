@@ -1,5 +1,6 @@
 import csv
 import datetime
+from subprocess import call
 
 right_now = datetime.datetime.now().isoformat()          
 list = []
@@ -34,7 +35,13 @@ filnm = filnma + ".csv"
 
 print("")
 
-infile = open(filnm, "r")
+try: 
+    infile = open(filnm, "r")
+
+except:
+    print("No such csv file was found in this directory.")
+    call(["python", "2CSVDeltas.py"])
+
 
 totlst = []
 
@@ -53,6 +60,16 @@ filnm2a = ""
 filnm2a = input("What is the name of the file containing the data from the second table, without the csv suffix: ")
 
 filnm2 = filnm2a + ".csv"
+
+try: 
+    infile = open(filnm2, "r")
+
+except:
+    print("")
+    print("No such csv file was found in this directory.")
+    call(["python", "2CSVDeltas.py"])
+
+infile.close()
 
 deltarows = []
 deltacols = []

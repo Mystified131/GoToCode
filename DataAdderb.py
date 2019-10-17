@@ -57,15 +57,6 @@ primdat = int(primcoldata)
 
 valin = val + ".csv"
 
-try:
-    infile = open(valin, "r")
-
-except:
-    print("No  source csv file by that name can be found.")
-    call(["python", "DataAdder.py"])
-
-infile.close()
-
 valot = tbl + tim + ".csv"
 
 colnm = (int(colnum)-1)
@@ -87,57 +78,62 @@ for x in range(colnm):
     if valcoldatax != "1":
         strlst.append(0)
 
-with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_output:
+try:
+    with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_output:
 
-    csv_input = csv.reader(f_input)
-    csv_output = csv.writer(f_output)
+        csv_input = csv.reader(f_input)
+        csv_output = csv.writer(f_output)
 
-    for row in csv_input:
+        for row in csv_input:
 
-        outlst = []
+            outlst = []
 
-        for x in range(1, int(colnum)):
+            for x in range(1, int(colnum)):
 
-            xstr = "UPDATE " + tbl + " SET "
+                xstr = "UPDATE " + tbl + " SET "
             
-            outlst.append(xstr)
+                outlst.append(xstr)
             
-            ystr = namlst[x]
+                ystr = namlst[x]
             
-            outlst.append(ystr)
+                outlst.append(ystr)
             
-            zstr = " = "
+                zstr = " = "
 
-            outlst.append(zstr)
+                outlst.append(zstr)
 
-            ostr = row[x]
-            nstr = row[0]
-            nnam = namlst[0]
+                ostr = row[x]
+                nstr = row[0]
+                nnam = namlst[0]
 
-            if strlst[x] == 1:
-                bstr= "'" + ostr + "'"
+                if strlst[x] == 1:
+                    bstr= "'" + ostr + "'"
 
-            if strlst[x] != 1:
-                bstr = ostr
+                if strlst[x] != 1:
+                    bstr = ostr
 
-            outlst.append(bstr)
+                outlst.append(bstr)
 
-            xxstr = " WHERE "
+                xxstr = " WHERE "
 
-            outlst.append(xxstr)
+                outlst.append(xxstr)
 
-            yystr = nnam + " = " 
+                yystr = nnam + " = " 
 
-            outlst.append(yystr)
+                outlst.append(yystr)
 
-            zzstr =  nstr
+                zzstr =  nstr
 
-            outlst.append(zzstr)
+                outlst.append(zzstr)
 
-            zzzstr = ";"
+                zzzstr = ";"
 
-            outlst.append(zzzstr)        
+                outlst.append(zzzstr)        
 
-        csv_output.writerow(outlst)  
+            csv_output.writerow(outlst)  
+
+except:
+    print("No such file was found. Thank you.")
+    call(["python", "DataAdder.py"])
 
 print ("The scripts file should now be available in the same folder as the python code.")
