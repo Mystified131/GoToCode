@@ -62,15 +62,26 @@ deltalisttwo = []
 c =0
 field={}
 
+testlst = []
+testlst2 = []
+lena = ""
+lenb = ""
+
 with open(filnm, 'r') as csvFile:
     csv_reader = csv.reader(csvFile, delimiter=',')
     for row in csv_reader:
         colone1int=len(row)
+        testlst.append(row)
 
 with open(filnm2, 'r') as csvFile:
     csv_reader = csv.reader(csvFile, delimiter=',')
     for row in csv_reader:
         colone2int=len(row)
+        testlst2.append(row)
+
+if len(testlst) != len(testlst2):
+    lena = str(len(testlst))
+    lenb = str(len(testlst2))
 
 if colone1int >= colone2int:
     coloneint = colone2int
@@ -151,12 +162,23 @@ if colone1int != colone2int:
     outfile.write("Table 1 has " + astr + " columns." + '\n')
     outfile.write("Table 2 has " + bstr + " columns." + '\n')
     outfile.write('\n')
+
+if len(testlst) != len(testlst2):
+    outfile.write("There are deltas in row numbers." + '\n')
+    outfile.write('\n')
+    outfile.write("Table 1 has " + lena + " rows." + '\n')
+    outfile.write("Table 2 has " + lenb + " rows." + '\n')
+    outfile.write('\n')
+
+if len(testlst) == len(testlst2):
+    outfile.write("There are no deltas in row numbers." + '\n')
+    outfile.write('\n')
     
 x = len(deltarows)
 
 x1 = str(x)
 
-outfile.write("There are a total of " + x1 + " deltas between the two tables." + '\n')
+outfile.write("There are a total of " + x1 + " actual deltas between the two tables." + '\n')
 outfile.write('\n')
 
 if x > 0:
