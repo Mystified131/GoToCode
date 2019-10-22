@@ -35,7 +35,7 @@ colnum = input("How many columns are there to populate? Note that, if the primar
 
 print("")
 
-valcol = input("Please enter the name of the primary key column holding values: ")
+valcol = input("Please enter the name of the determinant column holding values: ")
 
 print("")
 
@@ -130,7 +130,11 @@ with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_o
 
             outlst.append(yystr)
 
-            zzstr =  nstr
+            if primcoldata != "1":
+                zzstr = nstr
+
+            if primcoldata == "1":
+                zzstr = "'" + nstr + "'"
 
             outlst.append(zzstr)
 
