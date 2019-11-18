@@ -103,10 +103,10 @@ with open(valin, newline='\n') as f_input, open(outfil, 'w', newline='\n') as f_
         for x in range(colnum):
             astr = row[x]
 
-            if strlst[x] == 1:
+            if strlst[x] == 1 and astr != 'NULL':
                 bstr= "'" + astr + "'"
 
-            if strlst[x] != 1:
+            if strlst[x] != 1 or astr == 'NULL':
                 bstr = astr
 
             if x < (colnum-1):

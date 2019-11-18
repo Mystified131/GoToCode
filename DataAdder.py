@@ -180,10 +180,10 @@ with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_o
             nstr = row[0]
             nnam = namlst[0]
 
-            if strlst[x] == 1:
+            if strlst[x] == 1 and ostr != 'NULL':
                 bstr= "'" + ostr + "'"
 
-            if strlst[x] != 1:
+            if strlst[x] != 1 or ostr == 'NULL':
                 bstr = ostr
 
             outlst.append(bstr)
