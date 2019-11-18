@@ -31,6 +31,10 @@ val = input("Please enter the name of the .csv file, without the .csv suffix. Pl
 
 print("")
 
+test = input("Please enter 'm' if you want to manually enter data types: ")
+
+print("")
+
 colnum = input("How many columns are there to populate? Note that, if the primary key column is also referenced, that counts as a column, so please add 1 to your total: ")
 
 print("")
@@ -41,21 +45,51 @@ print("")
 
 namlst.append(valcol)
 
-primcoldata = input("Please enter '1' if the data input is a string, '0' if not: ")
+valin = val + ".csv"
 
-print("")
+if test == 'm':
+    primcoldata = input("Please enter '1' if the data input is a string, '0' if not: ")
 
-if primcoldata == "1":
-    strlst.append(1)
+    print("")
 
-if primcoldata != "1":
-    strlst.append(0)
+    if primcoldata == "1":
+        strlst.append(1)
+
+    if primcoldata != "1":
+        strlst.append(0)
+
+if test != 'm':
+
+    content = []
+
+    try:
+        with open(valin, 'r') as csvFile:
+            csv_reader = csv.reader(csvFile, delimiter=',')
+            for row in csv_reader:
+                content.append(row[0])
+    except:
+        print("")
+        print("No file by that name can be found.")
+        call(["python", "DataAdder.py"])
+
+    colstr = 0
+
+    for elem in content:
+        for x in elem:
+            if x.isalpha() and elem != 'NULL':
+                colstr = 1
+
+    if colstr > 0:
+        strlst.append(1)
+        primcoldata = '1'
+
+    if colstr == 0:
+        strlst.append(0)
+        primcoldata = '0'
 
 primdat = int(primcoldata)
 
 #This code creates the SQL data to drop values from a .csv into the table
-
-valin = val + ".csv"
 
 try:
     infile = open(valin, "r")
@@ -77,15 +111,47 @@ for x in range(colnm):
 
     namlst.append(valcolx)
 
-    valcoldatax = input("Please enter '1' if the data input is a string: ")
+    if test == 'm':
 
-    print("")
+        valcoldatax = input("Please enter '1' if the data input is a string: ")
 
-    if valcoldatax == "1":
-        strlst.append(1)
+        print("")
 
-    if valcoldatax != "1":
-        strlst.append(0)
+        if valcoldatax == "1":
+            strlst.append(1)
+
+        if valcoldatax != "1":
+            strlst.append(0)
+
+    if test != 'm':
+
+        content = []
+
+        try:
+            with open(valin, 'r') as csvFile:
+                csv_reader = csv.reader(csvFile, delimiter=',')
+                for row in csv_reader:
+                    content.append(row[x + 1])
+
+        except:
+            print("")
+            print("No file by that name can be found.")
+            call(["python", "DataAdder.py"])
+
+        colstr = 0
+
+        for elem in content:
+            for x in elem:
+                if x.isalpha() and elem != 'NULL':
+                    colstr = 1
+
+        if colstr > 0:
+            strlst.append(1)
+            valcoldatax = "1"
+
+        if colstr == 0:
+            strlst.append(0)
+            valcoldatax = "0"
 
 with open(valin, newline='\n') as f_input, open(valot, 'w', newline='\n') as f_output:
 

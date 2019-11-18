@@ -27,6 +27,10 @@ val = input("Please enter the name of the .csv file, without the .csv suffix. Pl
 
 print("")
 
+test = input("Please enter 'm' to manually key in column data types: ")
+
+print("")
+
 valin = val  + ".csv"
 
 try:
@@ -40,16 +44,44 @@ except:
     print("No file by that name can be found.")
     call(["python", "RowAdder.py"])
 
-
 strlst = []
 
 for x in range(colnum):
-    yn = input("Is column number " + str(x) + " a string? If so, enter a '1': ")
-    print("")
-    if yn == "1":
-        strlst.append(1)
-    if yn != "1":
-        strlst.append(0)
+
+    if test == "m":
+        yn = input("Is column number " + str(x) + " a string? If so, enter a '1': ")
+        print("")
+        if yn == "1":
+            strlst.append(1)
+        if yn != "1":
+            strlst.append(0)
+
+    if test != 'm':
+
+        content = []
+
+        try:
+            with open(valin, 'r') as csvFile:
+                csv_reader = csv.reader(csvFile, delimiter=',')
+                for row in csv_reader:
+                    content.append(row[x])
+
+        except:
+            print("")
+            print("No file by that name can be found.")
+            call(["python", "RowAdder.py"])
+
+        colstr = 0
+
+        for elem in content:
+            for x in elem:
+                if x.isalpha() and elem != 'NULL':
+                    colstr = 1
+
+        if colstr > 0:
+            strlst.append(1)
+        if colstr == 0:
+            strlst.append(0)
 
 outfil = tbl + tim + ".csv"
 

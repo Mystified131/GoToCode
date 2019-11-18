@@ -1,4 +1,4 @@
-infile = open("Mod.txt", "r")
+infile = open("1.txt", "r")
 
 A1 = []
 
@@ -8,14 +8,14 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == ".":
+        if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
     A1.append(bline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-infile = open("ModC.txt", "r")
+infile = open("2.txt", "r")
 
 A2 = []
 
@@ -32,7 +32,7 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("Mod2.txt", "r")
+infile = open("3.txt", "r")
 
 A3 = []
 
@@ -42,7 +42,7 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == ".":
+        if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
     A3.append(bline)
     bline = ""
