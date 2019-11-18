@@ -10,7 +10,7 @@ for i in right_now:
 
 tim = ("".join(list))
 
-rootdir = "C:\\Users\\TPark\\LocalPythonCode\\GoToCode"
+rootdir = "C:\\Users\\TPark\\LocalPythonCode\\GoToCode\\Variance\\"
 
 fillst = []
 
@@ -21,7 +21,7 @@ for subdir, dirs, files in os.walk(rootdir):
         filepath = subdir + os.sep + file
 
         if filepath.endswith(".txt"):
-            fillst.append(file)    
+            fillst.append(filepath)    
 
 print(fillst)
 
@@ -29,7 +29,7 @@ anslist = []
 
 deltstra = []
 
-filstr = fillst[0]
+filstr =  fillst[0]
 
 infile = open(filstr, "r")
 

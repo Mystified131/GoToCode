@@ -41,13 +41,11 @@ olddir = "V:\\Config\\TEST\\Regression Testing\\Newer\\Regression_Testing_Result
 
 print("")
 
-envir = input("What environment are the new tests from (DEV / TEST / UAT / PROD)?: ")
+envir = input("What environment are the tests from (DEV / TEST / UAT / PROD)?: ")
 
 print("")
 
-envir2 = input("What environment are the old, baseline tests from (DEV / TEST / UAT / PROD?: ")
-
-print("")
+envir2 = envir
 
 dat = input("What is the later output's date, in the following form (6262019 or 7032020, etc): ")
 
