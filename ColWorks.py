@@ -1,23 +1,8 @@
-infile = open("Mod.txt", "r")
+infile = open("1.txt", "r")
 
 A1 = []
 
-aline = infile.readline()
-
-bline = ""
-
-while aline:
-    for y in aline:
-        if y.isalnum() or y == "/" or y == ".":
-            bline+=y
-    A1.append(bline)
-    bline = ""
-    aline = infile.readline()
-infile.close()
-
-infile = open("ModC.txt", "r")
-
-A2 = []
+listref = []
 
 aline = infile.readline()
 
@@ -27,12 +12,33 @@ while aline:
     for y in aline:
         if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
-    A2.append(bline)
+    cline = bline[:-1]
+    A1.append(cline)
+    dline = bline[-1:]
+    listref.append(dline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-infile = open("Mod2.txt", "r")
+infile = open("2.txt", "r")
+
+A2 = []
+
+aline = infile.readline()
+
+bline = ""
+
+while aline:
+    for y in aline:
+        if y.isalnum() or y == "/" or y == "."  or y == "-" :
+            bline+=y
+    cline = bline[:-1]
+    A2.append(cline)
+    bline = ""
+    aline = infile.readline()
+infile.close()
+
+infile = open("3.txt", "r")
 
 A3 = []
 
@@ -42,31 +48,65 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == ".":
+        if y.isalnum() or y == "/" or y == "." :
             bline+=y
     A3.append(bline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-Conddic = {}
+infile = open("4.txt", "r")
 
-x = len(A1)
+A4 = []
+
+aline = infile.readline()
+
+bline = ""
+
+while aline:
+    for y in aline:
+        if y.isalnum() or y == "/" or y == "." :
+            bline+=y
+    A4.append(bline)
+    bline = ""
+    aline = infile.readline()
+infile.close()
+
+Moddic = {}
+
+x = len(A2)
 
 for ctr in range(x):
-    Conddic[A1[ctr]] = A2[ctr]
+    Moddic[A2[ctr]] = str(ctr)
 
+print(Moddic)
 
-print(Conddic)
+print(A1)
+
+x = len(A2)
+
+listid = []
+
+for elem in A1:
+    try:
+        astr = Moddic[elem]
+        listid.append(astr)
+    except:
+        listid.append('NULL')
+
+print(listid)
+
+print(listref)
+
+x = len(A3)
 
 outlst = []
 
-for elem in A3:
-    if elem in A1:
-        astr = Conddic[elem]
-        outlst.append(astr)
-    if elem not in A1:
-        outlst.append('NULL')
+for ctr in range(x):
+    astr = "UPDATE dbo.CondUnitBaaNData Set AWEFPassOrFail = '" + A3[ctr] + "' WHERE CondUnitModelID = " + listid[ctr] + " and RefType = '" + listref[ctr] + "';"
+    bstr = "UPDATE dbo.CondUnitBaaNData Set AWEFRating = '" + A4[ctr] + "' WHERE CondUnitModelID = " + listid[ctr] + " and RefType = '" + listref[ctr] + "';"
+    outlst.append(astr)
+    outlst.append(bstr)
 
 outfile = open("scriptsa.txt", "w")
 
