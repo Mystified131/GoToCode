@@ -1,3 +1,5 @@
+# To begin, provide a .txt file of the Tables by name, one per line, and tables in this form: t1.csv, t2.csv, and so on for all tables referenced
+
 import csv
 import datetime
 from subprocess import call
@@ -11,49 +13,28 @@ for i in right_now:
 
 tim = ("".join(list))
 
-tablelst = ['CondUnitOilControlOptions',
-'CondUnitReceiverCapacity',											
-'HSeriesCondenserModel'	,
-'HSeriesCondenserCapacity',				
-'CondUnitOptionsPricing',
-'CondUnitCoatingPricing',
-'HSeriesHighEffAWEF',
-'UnitType',
-'CabinetSize',
-'CondUnitBaaNData',
-'CondensingUnitModel',
-'HSeriesMainProtection',
-'HSeriesCondenserXref',
-'Voltage',
-'CondUnitPricing',
-'HSeriesFinMaterial',
-'HSeriesWeight',
-'CondUnitAddOptions',
-'HSeriesCompressorXref',
-'CondUnitFusePricing',
-'CondUnitEvapoDefrost',
-'CondensingUnitProdLine',
-'CondUnitCabinetSize',
-'SuctODSize',
-'LiqODSize',
-'ReceiverSize',
-'HSeriesDefrostTimerOptions',
-'ReceiverSizeXref',
-'CondUnitRefrigerationType',
-'CondensingUnitFanCyclingOptionsAvaialbility',
-'CondensingUnitFanCyclingOptions',
-'CondensingUnitFanCyclingConfig',
-'CondUnitMechanicalOptions',
-'CondUnitBaseType',
-'ReceiverUpsizePricing',
-'CondUnitMechanicalOptionsAvaialability',
-'CondUnitControlOptionsConfig',
-'CondUnitOilControlBrands',
-'RefrigerantType',
-'CondUnitOilControlType',
-'CondUnitReceiverSize']
+infile = open("Tables.txt", "r")
 
-for counter in range(41):
+tablelst = []
+
+listref = []
+
+aline = infile.readline()
+
+bline = ""
+
+while aline:
+    for y in aline:
+        if y.isalnum() or y == "/" or y == "." or y == "-" or y == "_":
+            bline+=y
+    tablelst.append(bline)
+    bline = ""
+    aline = infile.readline()
+infile.close()
+
+x = len(tablelst)
+
+for counter in range(x):
 
     tbl = tablelst[counter]
 

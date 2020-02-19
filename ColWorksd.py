@@ -1,4 +1,4 @@
-infile = open("a.txt", "r")
+infile = open("Nam1.txt", "r")
 
 A1 = []
 
@@ -15,7 +15,7 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("b.txt", "r")
+infile = open("Mod1.txt", "r")
 
 A2 = []
 
@@ -32,21 +32,207 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-x = len(A1)
+infile = open("Rec.txt", "r")
 
-outlst = []
+A3 = []
+
+aline = infile.readline()
+
+bline = ""
+
+while aline:
+    for y in aline:
+        if y.isalnum() or y == "/" or y == "." or y == " ":
+            bline+=y
+    A3.append(bline)
+    bline = ""
+    aline = infile.readline()
+infile.close()
+
+outlsta = []
+
+outlstb = []
+
+outlstc = []
+
+outlstd = []
+
+
+x = len(A2)
 
 for ctr in range(x):
-    if A2[ctr] == 'NULL':
-        astr = "UPDATE dbo.CondUnitBaaNData set AWEFPassOrFail = 'Exempt' WHERE CondUnitBaaNDataId = " + str(ctr) + ";"
-        bstr = "UPDATE dbo.CondUnitBaaNData set AWEFRating = 'Exempt' WHERE CondUnitBaaNDataId = " + str(ctr) + ";"
-        outlst.append(astr)
-        outlst.append(bstr)
+    astr = A1[ctr]
+    if 'HT' in astr[:3]:
+        for adder in range (1,8):
+            if adder < int(A3[ctr]): 
+                outlsta.append("0")
+            if adder >= int(A3[ctr]):
+                outlsta.append("1")
+            if adder == int(A3[ctr]):
+                outlstb.append("1")
+            if adder != int(A3 [ctr]):
+                outlstb.append("0")
+
+    if 'HT' not in astr[:3]:
+
+        if A3[ctr] == '1':
+            outlsta.append('0')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('1')
+
+            outlstb.append('1')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+
+        if  A3[ctr] == '2':
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('0')
+            outlsta.append('0')
+
+            outlstb.append('0')
+            outlstb.append('1')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+        
+        if  A3[ctr] =='3':
+            
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('1')
+            outlsta.append('1')
+            outlsta.append('0')
+            outlsta.append('0')
+
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('1')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+
+        if  A3[ctr] == '4':
+            
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('1')
+            outlsta.append('0')
+            outlsta.append('0')
+
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('1')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            
+        if  A3[ctr] =='5':
+            
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('1')
+            outlsta.append('1')
+
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('1')
+            outlstb.append('0')
+            outlstb.append('0')
+
+        if  A3[ctr] =='6':
+            
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('1')
+
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('1')
+            outlstb.append('0')
+
+        if  A3[ctr] =='7':
+            
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+            outlsta.append('0')
+
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('0')
+            outlstb.append('1')
+    
+    for y in range(1,8):
+        z = str(y)
+        outlstc.append(z)
+        astr = A2[ctr]
+        outlstd.append(astr)
 
 
-outfile = open("scriptsa2.txt", "w")
 
-for elem in outlst:
+
+
+outfile = open("scriptsa.txt", "w")
+
+for elem in outlsta:
+    outfile.write(elem +  '\n')
+
+outfile.close()
+
+outfile = open("scriptsb.txt", "w")
+
+for elem in outlstb:
+    outfile.write(elem +  '\n')
+
+outfile.close()
+
+outfile = open("scriptsc.txt", "w")
+
+for elem in outlstc:
+    outfile.write(elem +  '\n')
+
+outfile.close()
+
+outfile = open("scriptsd.txt", "w")
+
+for elem in outlstd:
     outfile.write(elem +  '\n')
 
 outfile.close()

@@ -1,6 +1,9 @@
-infile = open("1.txt", "r")
+
 
 A1 = []
+
+
+infile = open("Mod1.txt", "r")
 
 aline = infile.readline()
 
@@ -15,9 +18,10 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("2.txt", "r")
 
 A2 = []
+
+infile = open("ID1.txt", "r")
 
 aline = infile.readline()
 
@@ -32,7 +36,7 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("3.txt", "r")
+infile = open("Mod2.txt", "r")
 
 A3 = []
 
@@ -49,9 +53,11 @@ while aline:
     aline = infile.readline()
 infile.close()
 
+
 Conddic = {}
 
-x = len(A1)
+
+x = len(A2)
 
 for ctr in range(x):
     Conddic[A1[ctr]] = A2[ctr]
@@ -59,9 +65,14 @@ for ctr in range(x):
 
 print(Conddic)
 
+print(A3)
+
+
 outlst = []
 
-for elem in A3:
+
+for elem in A3:   
+
     if elem in A1:
         astr = Conddic[elem]
         outlst.append(astr)
@@ -71,7 +82,9 @@ for elem in A3:
 outfile = open("scriptsa.txt", "w")
 
 for elem in outlst:
-    outfile.write(elem +  '\n')
+    bstr = str(elem)
+    outfile.write(bstr +  '\n')
 
 outfile.close()
+
 

@@ -1,8 +1,6 @@
-infile = open("Typ.txt", "r")
+infile = open("CName1.txt", "r")
 
 A1 = []
-
-listref = []
 
 aline = infile.readline()
 
@@ -10,18 +8,17 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "." or y == "-" or y == "_":
+        if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
-    A1.append(bline)
+    cline = bline[:3] + bline[-4:-1]
+    A1.append(cline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-infile = open("RL1.txt", "r")
+infile = open("CMod1.txt", "r")
 
 A2 = []
-
-listref = []
 
 aline = infile.readline()
 
@@ -29,18 +26,16 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "." or y == "-" or y == "_":
+        if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
     A2.append(bline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-infile = open("RL2.txt", "r")
+infile = open("CName4.txt", "r")
 
 A3 = []
-
-listref = []
 
 aline = infile.readline()
 
@@ -48,31 +43,41 @@ bline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "." or y == "-" or y == "_":
+        if y.isalnum() or y == "/" or y == "." or y == "-":
             bline+=y
     A3.append(bline)
     bline = ""
     aline = infile.readline()
 infile.close()
 
-
-outlsta = []
+Conddic = {}
 
 x = len(A1)
 
 for ctr in range(x):
-    if A1[ctr] not in ['NULL', '1', '2', '3', '4']:
-        outlsta.append(A3[ctr])
-    if A1[ctr] in ['NULL', '1', '2', '3', '4']:
-        outlsta.append(A2[ctr])
+    Conddic[A1[ctr]] = A2[ctr]
 
 
+print(Conddic)
+
+print(A3)
+
+outlst = []
+
+A4 = []
+
+for elem in A3:   
+
+    if elem in A1:
+        astr = Conddic[elem]
+        outlst.append(astr)
+    if elem not in A1:
+        outlst.append('NULL')
 
 outfile = open("scriptsa.txt", "w")
 
-for elem in outlsta:
+for elem in outlst:
     outfile.write(elem +  '\n')
 
 outfile.close()
-
 
