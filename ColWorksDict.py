@@ -3,7 +3,7 @@
 A1 = []
 
 
-infile = open("Mod1.txt", "r")
+infile = open("Comp1.txt", "r")
 
 aline = infile.readline()
 
@@ -21,7 +21,7 @@ infile.close()
 
 A2 = []
 
-infile = open("ID1.txt", "r")
+infile = open("CompID.txt", "r")
 
 aline = infile.readline()
 
@@ -36,7 +36,7 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("Mod2.txt", "r")
+infile = open("Comp2.txt", "r")
 
 A3 = []
 
