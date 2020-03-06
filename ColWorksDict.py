@@ -3,15 +3,16 @@
 A1 = []
 
 
-infile = open("Comp1.txt", "r")
+infile = open("1.txt", "r")
 
 aline = infile.readline()
 
 bline = ""
+cline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "." or y == "-":
+        if y.isalnum() or y == "/" or y == ".":
             bline+=y
     A1.append(bline)
     bline = ""
@@ -21,7 +22,7 @@ infile.close()
 
 A2 = []
 
-infile = open("CompID.txt", "r")
+infile = open("2b.txt", "r")
 
 aline = infile.readline()
 
@@ -36,17 +37,18 @@ while aline:
     aline = infile.readline()
 infile.close()
 
-infile = open("Comp2.txt", "r")
+infile = open("3.txt", "r")
 
 A3 = []
 
 aline = infile.readline()
 
 bline = ""
+cline = ""
 
 while aline:
     for y in aline:
-        if y.isalnum() or y == "/" or y == "." or y == "-":
+        if y.isalnum() or y == "/" or y == ".":
             bline+=y
     A3.append(bline)
     bline = ""
@@ -74,8 +76,10 @@ outlst = []
 for elem in A3:   
 
     if elem in A1:
+
         astr = Conddic[elem]
         outlst.append(astr)
+
     if elem not in A1:
         outlst.append('NULL')
 
